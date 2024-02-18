@@ -2,8 +2,16 @@ const express= require("express")
 const app =  express();
 const routes = require("./routes/route")
 
+const myEvent = require("./app/event/events")
+app.use((req,res,next)=>{
+ req.myEvent = myEvent;
+ next()
 
 
+})
+
+
+// for parsing
 app.use(express.json())
 app.use(express.urlencoded({
  extended:false
